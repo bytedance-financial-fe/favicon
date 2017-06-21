@@ -16,8 +16,9 @@ const fs = require('fs');
  * @api public
  */
 
-module.exports = function (path, options){
-  if (!path) {
+module.exports = function (options){
+  
+  if (!options.path) {
     return (ctx, next) => {
       if ('/favicon.ico' != ctx.path) {
         return next();
@@ -25,9 +26,8 @@ module.exports = function (path, options){
     };
   }
 
-  path = resolve(path);
-  options = options || {};
-
+  const path = resolve(options.path);
+  //options = options || {};
   let icon;
   const maxAge = options.maxAge == null
     ? 86400000
@@ -35,6 +35,7 @@ module.exports = function (path, options){
   const cacheControl = `public, max-age=${maxAge / 1000 | 0}`;
 
   return (ctx, next) => {
+    console.log(ctx.path);
     if ('/favicon.ico' != ctx.path) {
       return next();
     }
@@ -45,6 +46,7 @@ module.exports = function (path, options){
     } else {
       // lazily read the icon
       if (!icon) icon = fs.readFileSync(path);
+      console.log(icon);
       ctx.set('Cache-Control', cacheControl);
       ctx.type = 'image/x-icon';
       ctx.body = icon;

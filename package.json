@@ -1,6 +1,6 @@
 {
-  "name": "koa-favicon",
-  "description": "favicon bounce middleware for koa",
+  "name": "byted-koa-favicon",
+  "description": "favicon bounce middleware for koa used by egg",
   "repository": "koajs/favicon",
   "version": "2.0.0",
   "keywords": [
