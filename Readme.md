@@ -1,11 +1,13 @@
-# koa-favicon [![Build Status](https://travis-ci.org/koajs/favicon.svg)](https://travis-ci.org/koajs/favicon)
+# byted-koa-favicon 
 
- Koa middleware for serving a favicon. Based on [serve-favicon](https://github.com/expressjs/serve-favicon).
+ Koa middleware for serving a favicon. Based on [koa-favicon]
+ 本来是想着给egg.js用的，奈何人家自带，所以这个并无卵用，
+ 只是修改了一下中间件初始化参数，
 
 ## Installation
 
 ```js
-$ npm install koa-favicon
+$ npm install byted-koa-favicon
 ```
 
 ## Example
@@ -15,14 +17,14 @@ const Koa = require('koa');
 const favicon = require('koa-favicon');
 const app = new Koa();
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon({path: __dirname + '/public/favicon.ico'}));
 ```
 
 ## API
 
-### favicon(path, [options])
+### favicon(options)
 
-Returns a middleware serving the favicon found on the given `path`.
+Returns a middleware serving the favicon found on the given `options.path`.
 
 #### options
 
